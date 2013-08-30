@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = KPCC.get_all_posts
+    @posts = Post.find(:all, params: { limit: 5 })
   end
 
   def filter
-    @filtered_posts = KPCC.filter(params)
+    @filtered_posts = Post.find(:all, params: { query: params[:search_term], limit: 40 })
   end
 
 end
