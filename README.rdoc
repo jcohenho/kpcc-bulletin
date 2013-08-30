@@ -7,7 +7,7 @@ https://github.com/SCPR/api-docs/tree/master/AudioVision/v1
 == Getting Started
 
 1. Change directory to <tt>kpcc-bulletin</tt> and start the web server:
-       cd kpcc-bulletin; rails s
+			 cd kpcc-bulletin; rails s
 
 2. Go to http://localhost:3000/
 

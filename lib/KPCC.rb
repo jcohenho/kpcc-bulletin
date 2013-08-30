@@ -8,17 +8,17 @@ class KPCC
 	POSTS = {}
 
 	def initialize(options = {})
-  	self.title = options[:title]
-  	self.subtitle = options[:subtitle]
-  	self.byline = options[:byline]
-  	self.published_at = options[:published_at]
-  	self.teaser = options[:teaser]
-  	self.body = options[:body]
-  	self.public_url = options[:public_url]
-  	self.thumbnail = options[:thumbnail]
-  	self.category = options[:category]
-  	self.video_id = options[:video_id]
-  	self.video_type = options[:video_type]
+		self.title = options[:title]
+		self.subtitle = options[:subtitle]
+		self.byline = options[:byline]
+		self.published_at = options[:published_at]
+		self.teaser = options[:teaser]
+		self.body = options[:body]
+		self.public_url = options[:public_url]
+		self.thumbnail = options[:thumbnail]
+		self.category = options[:category]
+		self.video_id = options[:video_id]
+		self.video_type = options[:video_type]
 	end
 
 	def self.get_all_posts
