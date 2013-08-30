@@ -24,19 +24,7 @@ class Post
   def self.get_all_posts
     response = get('/posts.json?limit=5')
     if response.success?
-      response.each do |res|
-
-        if res['assets'].present?
-          if res['assets'].first["native"].present?
-            video_id = res['assets'].first["native"]["id"]
-            video_type = res['assets'].first["native"]["type"]
-          end
-        end
-
-        POSTS[res['id']] = self.new(title: res['title'], subtitle: res['subtitle'], byline: res['byline'], published_at: res['published_at'],
-        teaser: res['teaser'], body: res['body'], public_url: res['public_url'], thumbnail: res['thumbnail'],
-        category: res['category'], video_id: video_id, video_type: video_type) unless POSTS.any? {|k,v| k.include? res['id']}
-      end
+      self.create_posts(response)
     else
       raise response.response
     end
@@ -49,19 +37,7 @@ class Post
     if response.success?
       case params[:filter_type]
         when 'add'
-          response.each do |res|
-
-            if res['assets'].present?
-              if res['assets'].first["native"].present?
-                video_id = res['assets'].first["native"]["id"]
-                video_type = res['assets'].first["native"]["type"]
-              end
-            end
-
-            POSTS[res['id']] = self.new(title: res['title'], subtitle: res['subtitle'], byline: res['byline'], published_at: res['published_at'],
-            teaser: res['teaser'], body: res['body'], public_url: res['public_url'], thumbnail: res['thumbnail'],
-            category: res['category'], video_id: video_id, video_type: video_type) unless POSTS.any? {|k,v| k.include? res['id']}
-          end
+         self.create_posts(response)
         when 'remove'
           POSTS.reject!{|k,v| v.title.match(/#{query}/i)}
       end
@@ -69,5 +45,20 @@ class Post
       raise response.response
     end
     return POSTS
+  end
+
+  def self.create_posts(response)
+    response.each do |res|
+      if res['assets'].present?
+        if res['assets'].first["native"].present?
+          video_id = res['assets'].first["native"]["id"]
+          video_type = res['assets'].first["native"]["type"]
+        end
+      end
+
+      POSTS[res['id']] = self.new(title: res['title'], subtitle: res['subtitle'], byline: res['byline'], published_at: res['published_at'],
+      teaser: res['teaser'], body: res['body'], public_url: res['public_url'], thumbnail: res['thumbnail'],
+      category: res['category'], video_id: video_id, video_type: video_type) unless POSTS.any? {|k,v| k.include? res['id']}
+    end
   end
 end
