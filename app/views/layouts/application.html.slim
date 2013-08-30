@@ -1,0 +1,15 @@
+doctype html
+head
+	title KPCC BULLETINBOARD
+ 	= stylesheet_link_tag    "application", :media => "all"
+	= javascript_include_tag "application"
+	= csrf_meta_tags
+	= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js", "jquery.masonry.min.js", "all", "osx", "jquery.simplemodal.js"
+	= stylesheet_link_tag "main", "demo", "osx"
+body
+	header#hd
+		.logo
+			h1 KPCC BULLETINBOARD
+	.wrapper
+		#bd
+			= yield

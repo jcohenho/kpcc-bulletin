@@ -1,0 +1,141 @@
+@import "compass";
+@include global-reset;
+
+
+$bg: #faf7f7;
+$color: #8c7e7e;
+
+body {
+  background: $bg - #050505;
+  font-family: "helvetica neue", sans-serif;
+  font-size: 13px;
+  color: #444;
+}
+
+a {
+  @include link-colors(#369);
+}
+
+.text-shadow {
+  text-shadow: 0 1px 0 white;
+}
+
+.wrapper {
+  width: 960px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#hd {
+  background: #2c2c2c;
+  width: 100%;
+  .logo {
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(#000,.2);
+    h1 {
+      color: White;
+      width: 400px;
+      height: 50px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 30px;
+      line-height: 50px;
+      text-transform: uppercase;
+      font-style: italic;
+      a {
+        position: relative;
+        top: 10px;
+        @include link-colors(DarkRed);
+        @include unstyled-link;
+        text-shadow: 0 1px 0 white, 0 5px 10px rgba(#000, .125);
+      }
+    }
+    .right {
+      float: right;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    ul {
+      font-weight: bold;
+      @extend .text-shadow;
+      li {
+        float: left;
+        padding: 15px 27px 0 14px;
+      }
+    }
+  }
+  nav {
+    border-top: 1px solid white;
+    @extend .text-shadow;
+    padding: 10px 0;
+    ul {
+      text-align: center;
+      li {
+        display: inline;
+        margin: 0 2px;
+        &:after {
+          content: "·";
+          padding-left: 7px;
+          color: rgba(#000,.3);
+        }
+        &:last-child:after {
+          content: none;
+        }
+      }
+    }
+  }
+}
+#masonry {
+  position: relative;
+  margin: 0 auto;
+}
+.item {
+  width: 192px;
+  float: left;
+  padding: 15px 15px 0;
+  margin: 0 7px 15px;
+  font-size: 12px;
+  background: white;
+  @include box-shadow( 0 1px 3px rgba(34,25,25,0.4) );
+  line-height: 1.5;
+  cursor: pointer;
+  h2 {
+    padding-top: 5px;
+  }
+  .comments {
+    color: $color;
+    padding-bottom: 15px;
+  }
+  .chat {
+
+  }
+  .chatbox {
+    $darkgrey: tint(Black, 45);
+    border-top: 1px solid white;
+    border-bottom: 1px solid rgba(#000,.1);
+    padding: 0 15px 5px;
+    font-weight: bold;
+    @include pie-clearfix;
+    color: $darkgrey;
+    text-align: center;
+    .flickrbombWrapper img {
+      margin: 0;
+    }
+    .flickrbombWrapper,
+    img {
+      margin-left: -35px;
+      float: left;
+    }
+    b {
+      font-weight: bold;
+    }
+    a {
+      text-decoration: none;
+      color: $color;
+      &:hover {
+        color: Black;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.wrapper
+	= form_tag "/posts/filter", method: :get do
+		= label_tag "Search for a KPCC AudioVision article with a keyword: "
+		= text_field_tag :search_term
+		= hidden_field_tag :filter_type, "add"
+		= submit_tag "Add to the bulletin"
+
+
+	= form_tag "/posts/filter", method: :get do
+		= label_tag "Remove an article from the bulletin with a keyword: "
+		= text_field_tag :search_term
+		= hidden_field_tag :filter_type, "remove"
+		= submit_tag "Remove from the bulletin"
+
+	#masonry
+		- posts.each do |key, post|
+
+			.item data-title=post.title data-body=post.body data-video-id=post.video_id data-video-type=post.video_type
+				= raw(post.thumbnail)
+				.chatbox
+					= link_to post.title, post.public_url
+				h2.lipsum
+				.comments
+					= post.teaser
+
+				#osx-modal-content
+					#osx-modal-title
+					.close
+						= link_to 'x', '#', class: 'simplemodal-close'
+					#osx-modal-data
