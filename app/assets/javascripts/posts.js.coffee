@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
   $ ->
-    $('.item').click ->
+    $('.content').click ->
       videoId = $(this).data('video-id')
       videoType = $(this).data('video-type')
       $('#osx-modal-title').html($(this).data('title'))
